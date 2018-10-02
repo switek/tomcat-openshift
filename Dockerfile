@@ -11,8 +11,6 @@ RUN set -x \
 	&& mkdir /opt/tomcat/logs \
 	&& apk add --update curl \	
 	&& curl -fSL http://mirrors.standaloneinstaller.com/apache/tomcat/tomcat-8/v8.5.34/bin/apache-tomcat-8.5.34.tar.gz -o /opt/tomcat/tomcat.tar.gz \ 	
-	&& chown -R tomcat:tomcat /opt/tomcat \
-	&& chmod -R 777 /opt/tomcat/* \
 	&& cd /opt/tomcat \
     	&& tar -zxf tomcat.tar.gz \
 	&& mv /opt/tomcat/apache-tomcat-8.5.34/* /opt/tomcat \
@@ -22,6 +20,8 @@ RUN set -x \
 	&& curl -fSL https://raw.githubusercontent.com/switek/tomcat-openshift/master/tomcat-users.xml -o /opt/tomcat/conf/tomcat-users.xml \
 	&& curl -fSL https://raw.githubusercontent.com/switek/tomcat-openshift/master/setenv.sh -o /opt/tomcat/bin/setenv.sh \
 	&& dos2unix /opt/tomcat/bin/setenv.sh
+	&& chown -R tomcat:tomcat /opt/tomcat \
+	&& chmod -R 777 /opt/tomcat/* 
 
 USER tomcat
 
