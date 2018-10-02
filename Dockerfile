@@ -4,7 +4,7 @@ RUN mkdir -p /opt/tomcat
 WORKDIR /opt/tomcat
 
 RUN set -x \
-	apk add --no-cache curl \	
+	apk -U add curl \	
 	&& curl -fSL http://mirrors.standaloneinstaller.com/apache/tomcat/tomcat-8/v8.5.34/bin/apache-tomcat-8.5.34.tar.gz -o /opt/tomcat/tomcat.tar.gz \
 	&& useradd tomcat \
 	&& chown -R tomcat:tomcat /opt/tomcat \
