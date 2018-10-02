@@ -7,13 +7,13 @@ RUN set -x \
 	apk add --no-cache curl \
 	&& apk add --no-cache dos2unix \
 	&& curl -fSL http://mirrors.standaloneinstaller.com/apache/tomcat/tomcat-8/v8.5.34/bin/apache-tomcat-8.5.34.tar.gz -o /opt/tomcat/tomcat.tar.gz \
-	&& useradd tomcat 
+	&& useradd tomcat \
 	&& chown -R tomcat:tomcat /opt/tomcat \
 	&& chmod -R 750 /opt/tomcat/* \
 	&& cd /opt/tomcat \
-    && tar -zxf tomcat.tar.gz \
-	&& mv /opt/tomcat/apache-tomcat-8.5.34/* /opt/tomcat
-	&& mv /opt/tomcat/conf/tomcat-users.xml /opt/tomcat/conf/tomcat-users.xml.bak
+    	&& tar -zxf tomcat.tar.gz \
+	&& mv /opt/tomcat/apache-tomcat-8.5.34/* /opt/tomcat \
+	&& mv /opt/tomcat/conf/tomcat-users.xml /opt/tomcat/conf/tomcat-users.xml.bak \
 	&& rm -rf /opt/tomcat/apache-tomcat-8.5.34 \
 	&& rm -rf /opt/tomcat/bin/*.bat \
 	&& curl -fSL https://raw.githubusercontent.com/switek/tomcat-openshift/master/tomcat-users.xml -o /opt/tomcat/conf/tomcat-users.xml \
