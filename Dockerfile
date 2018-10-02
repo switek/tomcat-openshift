@@ -11,7 +11,7 @@ RUN set -x \
 	&& addgroup -S tomcat \
  	&& adduser -S tomcat -G tomcat \
 	&& chown -R tomcat:tomcat /opt/tomcat \
-	&& chmod -R 775 /opt/tomcat \
+	&& chmod -R 777 /opt/tomcat/* \
 	&& cd /opt/tomcat \
     	&& tar -zxf tomcat.tar.gz \
 	&& mv /opt/tomcat/apache-tomcat-8.5.34/* /opt/tomcat \
