@@ -20,7 +20,7 @@ RUN set -x \
 	&& rm -rf /opt/tomcat/bin/*.bat \
 	&& curl -fSL https://raw.githubusercontent.com/switek/tomcat-openshift/master/tomcat-users.xml -o /opt/tomcat/conf/tomcat-users.xml \
 	&& curl -fSL https://raw.githubusercontent.com/switek/tomcat-openshift/master/setenv.sh -o /opt/tomcat/bin/setenv.sh \
-	&& curl -fSL https://raw.githubusercontent.com/switek/tomcat-openshift/master/context-manager.txt /opt/tomcat/webapps/manager/META-INF/context.xml \
+	&& curl -fSL https://raw.githubusercontent.com/switek/tomcat-openshift/master/context-manager.txt -o /opt/tomcat/webapps/manager/META-INF/context.xml \
 	&& dos2unix /opt/tomcat/bin/setenv.sh \
 	&& chown -R tomcat:tomcat /opt/tomcat \
 	&& chmod -R 777 /opt/tomcat/* 
