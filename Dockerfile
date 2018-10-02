@@ -2,14 +2,15 @@ FROM openjdk:8-jre-alpine
 #FROM java:alpine
 
 RUN mkdir -p /opt/tomcat
+RUN addgroup -S tomcat
+RUN adduser -S tomcat -G tomcat
+
 WORKDIR /opt/tomcat
 
 RUN set -x \
 	&& mkdir /opt/tomcat/logs \
 	&& apk add --update curl \	
-	&& curl -fSL http://mirrors.standaloneinstaller.com/apache/tomcat/tomcat-8/v8.5.34/bin/apache-tomcat-8.5.34.tar.gz -o /opt/tomcat/tomcat.tar.gz \	
-	&& addgroup -S tomcat \
- 	&& adduser -S tomcat -G tomcat \
+	&& curl -fSL http://mirrors.standaloneinstaller.com/apache/tomcat/tomcat-8/v8.5.34/bin/apache-tomcat-8.5.34.tar.gz -o /opt/tomcat/tomcat.tar.gz \ 	
 	&& chown -R tomcat:tomcat /opt/tomcat \
 	&& chmod -R 777 /opt/tomcat/* \
 	&& cd /opt/tomcat \
