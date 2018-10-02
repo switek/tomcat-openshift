@@ -6,7 +6,7 @@ WORKDIR /opt/tomcat
 RUN set -x \
 	&& apk add --update curl \	
 	&& curl -fSL http://mirrors.standaloneinstaller.com/apache/tomcat/tomcat-8/v8.5.34/bin/apache-tomcat-8.5.34.tar.gz -o /opt/tomcat/tomcat.tar.gz \
-	&& useradd tomcat \
+	&& adduser tomcat \
 	&& chown -R tomcat:tomcat /opt/tomcat \
 	&& chmod -R 750 /opt/tomcat/* \
 	&& cd /opt/tomcat \
