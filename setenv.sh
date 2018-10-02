@@ -1,0 +1,1 @@
+JAVA_OPTS= $JAVA_OPTS -Dtomcat.admin.passwd=$ENV_TOMCAT_ADMIN_PASSWD
