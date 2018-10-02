@@ -15,10 +15,12 @@ RUN set -x \
     	&& tar -zxf tomcat.tar.gz \
 	&& mv /opt/tomcat/apache-tomcat-8.5.34/* /opt/tomcat \
 	&& mv /opt/tomcat/conf/tomcat-users.xml /opt/tomcat/conf/tomcat-users.xml.bak \
+	&& mv /opt/tomcat/webapps/manager/META-INF/context.xml /opt/tomcat/webapps/manager/META-INF/context.xml.bak \
 	&& rm -rf /opt/tomcat/apache-tomcat-8.5.34 \
 	&& rm -rf /opt/tomcat/bin/*.bat \
 	&& curl -fSL https://raw.githubusercontent.com/switek/tomcat-openshift/master/tomcat-users.xml -o /opt/tomcat/conf/tomcat-users.xml \
 	&& curl -fSL https://raw.githubusercontent.com/switek/tomcat-openshift/master/setenv.sh -o /opt/tomcat/bin/setenv.sh \
+	&& curl -fSL https://raw.githubusercontent.com/switek/tomcat-openshift/master/context-manager.xml /opt/tomcat/webapps/manager/META-INF/context.xml \
 	&& dos2unix /opt/tomcat/bin/setenv.sh \
 	&& chown -R tomcat:tomcat /opt/tomcat \
 	&& chmod -R 777 /opt/tomcat/* 
