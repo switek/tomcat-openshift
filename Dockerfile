@@ -5,12 +5,13 @@ RUN mkdir -p /opt/tomcat
 WORKDIR /opt/tomcat
 
 RUN set -x \
+	&& mkdir/opt/tomcat/logs \
 	&& apk add --update curl \	
 	&& curl -fSL http://mirrors.standaloneinstaller.com/apache/tomcat/tomcat-8/v8.5.34/bin/apache-tomcat-8.5.34.tar.gz -o /opt/tomcat/tomcat.tar.gz \	
 	&& addgroup -S tomcat \
  	&& adduser -S tomcat -G tomcat \
 	&& chown -R tomcat:tomcat /opt/tomcat \
-	&& chmod -R 775 /opt/tomcat/* \
+	&& chmod -R 775 /opt/tomcat \
 	&& cd /opt/tomcat \
     	&& tar -zxf tomcat.tar.gz \
 	&& mv /opt/tomcat/apache-tomcat-8.5.34/* /opt/tomcat \
