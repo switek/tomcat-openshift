@@ -1,4 +1,5 @@
-FROM java:alpine
+FROM openjdk:8-jre-alpine
+#FROM java:alpine
 
 RUN mkdir -p /opt/tomcat
 WORKDIR /opt/tomcat
